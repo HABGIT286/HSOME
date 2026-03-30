@@ -1,12 +1,12 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 
 // ⚠️ ضع معلوماتك الحقيقية هنا
-const GITHUB_TOKEN = 'ghp_YOUR_GITHUB_TOKEN_HERE';
+const GITHUB_TOKEN = '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';
 const GITHUB_OWNER = 'HABGIT286';
 const GITHUB_REPO = 'HSOME';
 const GITHUB_PATH = 'notifications.json';
 
-const DISCORD_BOT_TOKEN = 'YOUR_DISCORD_BOT_TOKEN_HERE';
+const DISCORD_BOT_TOKEN = 'MTQ4ODAyNTU0MDc3MzU0ODA1Mg.GLOsr7.2gV72PdDZwxhztQT1HYIQZqO7fyRamLOQOK1U8';
 const NOTIFYME_BOT_ID = '1044050359586394192';
 const CHANNEL_ID = '1487837632716079344';
 
