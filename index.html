@@ -26,6 +26,7 @@
             --gold: #ffd700;
             --dark: #0a0a0a;
             --glass: rgba(10, 10, 10, 0.55);
+            --glow-color: rgba(0, 212, 255, 0.5);
         }
 
         html {
@@ -84,7 +85,7 @@
             justify-content: center;
             margin-bottom: 30px;
             animation: rotate 3s linear infinite;
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 40px var(--glow-color);
         }
 
         .loader-logo::before {
@@ -217,18 +218,18 @@
             background: linear-gradient(var(--dark), var(--dark)) padding-box,
                         linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
             object-fit: cover;
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 40px var(--glow-color);
             animation: profileGlow 3s ease-in-out infinite;
         }
 
         @keyframes profileGlow {
-            0%, 100% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
-            50% { box-shadow: 0 0 60px rgba(123, 44, 191, 0.6); }
+            0%, 100% { box-shadow: 0 0 40px var(--glow-color); }
+            50% { box-shadow: 0 0 60px var(--glow-color); }
         }
 
         .clock {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--gold));
             -webkit-background-clip: text;
@@ -236,15 +237,39 @@
             margin: 15px 0;
         }
 
-        .username {
+        .clock-date {
             font-family: 'Cairo', sans-serif;
-            font-size: 3rem;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+        }
+
+        .username {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             margin: 10px 0;
             letter-spacing: 6px;
+            animation: sokoPulse 2s ease-in-out infinite, sokoColor 5s ease-in-out infinite;
+        }
+
+        @keyframes sokoPulse {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+            }
+            50% { 
+                transform: scale(1.05);
+                text-shadow: 0 0 30px var(--accent), 0 0 60px var(--primary);
+            }
+        }
+
+        @keyframes sokoColor {
+            0% { color: var(--primary); }
+            25% { color: var(--secondary); }
+            50% { color: var(--accent); }
+            75% { color: var(--gold); }
+            100% { color: var(--primary); }
         }
 
         .header-subtitle {
@@ -284,6 +309,14 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-tab i {
+            font-size: 1.1rem;
+            color: var(--primary);
         }
 
         .nav-tab::before {
@@ -314,6 +347,10 @@
             transform: translateY(-3px);
         }
 
+        .nav-tab.active i {
+            color: #fff;
+        }
+
         /* Sections */
         .section {
             display: none;
@@ -340,7 +377,7 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 30px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 30px var(--glow-color);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -383,7 +420,7 @@
             border-radius: 20px;
             overflow: hidden;
             margin: 25px 0;
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 50px var(--glow-color);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -452,10 +489,6 @@
         }
 
         /* Theme Selector */
-        .theme-section {
-            margin-top: 30px;
-        }
-
         .theme-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -476,24 +509,14 @@
             overflow: hidden;
         }
 
-        .theme-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.2;
-            transition: opacity 0.3s;
-        }
-
-        .theme-card:hover::before {
-            opacity: 0.3;
+        .theme-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
         .theme-card.active {
             border-color: var(--primary);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 30px var(--glow-color);
             transform: translateY(-5px);
         }
 
@@ -527,7 +550,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 35px;
-            align-items: center;
+            align-items: start;
         }
 
         .about-info {
@@ -582,7 +605,7 @@
 
         .game-item:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 25px var(--glow-color);
             border-color: var(--primary);
         }
 
@@ -627,7 +650,7 @@
 
         .schedule-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 15px 40px var(--glow-color);
             border-color: var(--primary);
         }
 
@@ -669,7 +692,7 @@
         .tip-card:hover {
             transform: translateX(-10px);
             border-color: var(--primary);
-            box-shadow: -5px 5px 20px rgba(0, 212, 255, 0.3);
+            box-shadow: -5px 5px 20px var(--glow-color);
         }
 
         .tip-title {
@@ -702,6 +725,152 @@
             text-align: center;
         }
 
+        /* Lighting Section */
+        .lighting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .lighting-card {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lighting-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-color);
+            filter: blur(20px);
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+
+        .lighting-card:hover::before {
+            width: 80px;
+            height: 80px;
+            opacity: 0.8;
+        }
+
+        .lighting-card.active {
+            border-color: var(--light-color);
+            box-shadow: 0 0 40px var(--light-color), inset 0 0 30px var(--light-color);
+            transform: translateY(-5px);
+        }
+
+        .lighting-card.active::before {
+            width: 100px;
+            height: 100px;
+            opacity: 1;
+        }
+
+        .lighting-color {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px var(--light-color);
+        }
+
+        .lighting-name {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-color);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 15px;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--glow-color);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
         /* Music Player */
         .music-player {
             position: fixed;
@@ -714,7 +883,7 @@
             border-radius: 20px;
             padding: 15px 25px;
             z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px var(--glow-color);
             display: flex;
             align-items: center;
             gap: 20px;
@@ -892,14 +1061,15 @@
             }
             
             .username {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .album-container {
                 height: 280px;
             }
             
-            .theme-grid {
+            .theme-grid,
+            .lighting-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -914,18 +1084,25 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .nav-tab {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 575px) {
             .marquee-content { font-size: 1.2rem; }
             .profile-img { width: 110px; height: 110px; }
-            .clock { font-size: 1.6rem; }
+            .clock { font-size: 1.4rem; }
             .username { font-size: 2rem; letter-spacing: 3px; }
             .nav-tab { padding: 9px 15px; font-size: 0.8rem; }
             .section-title { font-size: 1.6rem; }
             .album-container { height: 250px; }
             .schedule-grid { grid-template-columns: repeat(2, 1fr); }
             .games-grid { grid-template-columns: 1fr; }
+            .theme-grid,
+            .lighting-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -955,6 +1132,7 @@
         <div class="profile-container">
             <img src="AA.jpg" alt="SOKO Profile" class="profile-img" onerror="this.style.background='linear-gradient(135deg, #00d4ff, #7b2cbf)'">
         </div>
+        <div class="clock-date" id="clockDate">January 1, 2024 - Monday</div>
         <div class="clock" id="clock">00:00:00</div>
         <h1 class="username">SOKO</h1>
         <p class="header-subtitle">Souls & Fighting Games Master</p>
@@ -962,13 +1140,42 @@
 
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
-        <button class="nav-tab active" data-section="home">🏠 الرئيسية</button>
-        <button class="nav-tab" data-section="about">👤 نبذة عني</button>
-        <button class="nav-tab" data-section="favorites">⭐ مفضلاتي</button>
-        <button class="nav-tab" data-section="schedule">⏰ أوقات اللعب</button>
-        <button class="nav-tab" data-section="tips">💡 نصائح</button>
-        <button class="nav-tab" data-section="themes">🎨 الثيمات</button>
-        <button class="nav-tab" data-section="social">🔗 تابعني</button>
+        <button class="nav-tab active" data-section="home">
+            <i class="fas fa-home"></i>
+            الرئيسية
+        </button>
+        <button class="nav-tab" data-section="about">
+            <i class="fas fa-user"></i>
+            نبذة عني
+        </button>
+        <button class="nav-tab" data-section="favorites">
+            <i class="fas fa-star"></i>
+            مفضلاتي
+        </button>
+        <button class="nav-tab" data-section="schedule">
+            <i class="fas fa-clock"></i>
+            أوقات اللعب
+        </button>
+        <button class="nav-tab" data-section="tips">
+            <i class="fas fa-lightbulb"></i>
+            نصائح
+        </button>
+        <button class="nav-tab" data-section="lighting">
+            <i class="fas fa-lightbulb"></i>
+            الإضاءة
+        </button>
+        <button class="nav-tab" data-section="themes">
+            <i class="fas fa-palette"></i>
+            الثيمات
+        </button>
+        <button class="nav-tab" data-section="contact">
+            <i class="fas fa-envelope"></i>
+            تواصل مباشر
+        </button>
+        <button class="nav-tab" data-section="social">
+            <i class="fas fa-link"></i>
+            تابعني
+        </button>
     </nav>
 
     <!-- Home Section -->
@@ -1200,6 +1407,55 @@
         </div>
     </section>
 
+    <!-- Lighting Section -->
+    <section class="section" id="lighting">
+        <div class="glass-card">
+            <h2 class="section-title">الإضاءة</h2>
+            <div class="lighting-grid">
+                <div class="lighting-card" data-light="#ffffff" onclick="changeLighting('#ffffff', 'أبيض')">
+                    <div class="lighting-color" style="background: #ffffff;"></div>
+                    <div class="lighting-name">أبيض</div>
+                </div>
+                <div class="lighting-card" data-light="#000000" onclick="changeLighting('#000000', 'أسود')">
+                    <div class="lighting-color" style="background: #000000; border: 2px solid rgba(255,255,255,0.3);"></div>
+                    <div class="lighting-name">أسود</div>
+                </div>
+                <div class="lighting-card" data-light="#ffd700" onclick="changeLighting('#ffd700', 'أصفر')">
+                    <div class="lighting-color" style="background: #ffd700;"></div>
+                    <div class="lighting-name">أصفر</div>
+                </div>
+                <div class="lighting-card" data-light="#10b981" onclick="changeLighting('#10b981', 'أخضر')">
+                    <div class="lighting-color" style="background: #10b981;"></div>
+                    <div class="lighting-name">أخضر</div>
+                </div>
+                <div class="lighting-card" data-light="#06b6d4" onclick="changeLighting('#06b6d4', 'سماوي')">
+                    <div class="lighting-color" style="background: #06b6d4;"></div>
+                    <div class="lighting-name">سماوي</div>
+                </div>
+                <div class="lighting-card" data-light="#ef4444" onclick="changeLighting('#ef4444', 'أحمر')">
+                    <div class="lighting-color" style="background: #ef4444;"></div>
+                    <div class="lighting-name">أحمر</div>
+                </div>
+                <div class="lighting-card" data-light="#a855f7" onclick="changeLighting('#a855f7', 'بنفسجي')">
+                    <div class="lighting-color" style="background: #a855f7;"></div>
+                    <div class="lighting-name">بنفسجي</div>
+                </div>
+                <div class="lighting-card" data-light="#14b8a6" onclick="changeLighting('#14b8a6', 'تركوازي')">
+                    <div class="lighting-color" style="background: #14b8a6;"></div>
+                    <div class="lighting-name">تركوازي</div>
+                </div>
+                <div class="lighting-card" data-light="#6b7280" onclick="changeLighting('#6b7280', 'رصاصي')">
+                    <div class="lighting-color" style="background: #6b7280;"></div>
+                    <div class="lighting-name">رصاصي</div>
+                </div>
+                <div class="lighting-card" data-light="#ec4899" onclick="changeLighting('#ec4899', 'وردي')">
+                    <div class="lighting-color" style="background: #ec4899;"></div>
+                    <div class="lighting-name">وردي</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Themes Section -->
     <section class="section" id="themes">
         <div class="glass-card">
@@ -1249,6 +1505,33 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="glass-card">
+            <h2 class="section-title">تواصل مباشر</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-user"></i>
+                        الاسم
+                    </label>
+                    <input type="text" class="form-input" id="contactName" placeholder="اكتب اسمك هنا...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-envelope"></i>
+                        الرسالة
+                    </label>
+                    <textarea class="form-textarea" id="contactMessage" placeholder="اكتب رسالتك هنا..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="sendContactMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                    إرسال الرسالة
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Social Section -->
     <section class="section" id="social">
         <div class="glass-card">
@@ -1280,7 +1563,7 @@
             <div class="music-artist">SOKO Gaming Mix</div>
         </div>
         <div class="music-controls">
-            <button class="music-btn" onclick="toggleMusic()">
+            <button class="music-btn play" onclick="toggleMusic()">
                 <i class="fas fa-play" id="playIcon"></i>
             </button>
             <div class="volume-control">
@@ -1294,7 +1577,7 @@
     </div>
 
     <footer class="footer">
-        <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> by SOKO</p>
+        <p>SOKO Gaming World © 2024</p>
     </footer>
 
     <audio id="audioPlayer" loop>
@@ -1302,6 +1585,9 @@
     </audio>
 
     <script>
+        // Configuration - ضع رابط webhook هنا
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1530663733590753442/g4eTeYwPwp8v6GsAVJ9IqtZHk1_QAUwrajA4o4C0EjQyORus1zfA5DkjGFgxY4FOmCHa';
+
         // Loader
         window.addEventListener('load', () => {
             let progress = 0;
@@ -1332,8 +1618,6 @@
                     clearInterval(interval);
                     setTimeout(() => {
                         loader.classList.add('hidden');
-                        // Auto-play music after loading
-                        playMusic();
                     }, 500);
                 }
             }, 200);
@@ -1357,13 +1641,24 @@
             });
         });
 
-        // Clock
+        // Clock - 12 Hour Format with Date
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
+            let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+            
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            
+            const dateStr = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} - ${days[now.getDay()]}`;
+            document.getElementById('clockDate').textContent = dateStr;
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -1494,7 +1789,9 @@
             document.documentElement.style.setProperty('--secondary', theme.secondary);
             document.documentElement.style.setProperty('--accent', theme.accent);
             
-            // Update active state
+            // Update glow color
+            document.documentElement.style.setProperty('--glow-color', theme.primary + '80');
+            
             document.querySelectorAll('.theme-card').forEach(card => {
                 card.classList.remove('active');
                 if (card.dataset.theme === themeName) {
@@ -1511,20 +1808,82 @@
             changeTheme(savedTheme);
         }
 
+        // Lighting Changer
+        function changeLighting(color, name) {
+            document.documentElement.style.setProperty('--glow-color', color + '80');
+            
+            document.querySelectorAll('.lighting-card').forEach(card => {
+                card.classList.remove('active');
+                card.style.setProperty('--light-color', 'transparent');
+            });
+            
+            const activeCard = document.querySelector(`.lighting-card[data-light="${color}"]`);
+            if (activeCard) {
+                activeCard.classList.add('active');
+                activeCard.style.setProperty('--light-color', color);
+            }
+            
+            localStorage.setItem('selectedLighting', color);
+        }
+
+        // Load saved lighting
+        const savedLighting = localStorage.getItem('selectedLighting');
+        if (savedLighting) {
+            changeLighting(savedLighting, '');
+        }
+
+        // Contact Form - Discord Webhook
+        async function sendContactMessage() {
+            const name = document.getElementById('contactName').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+            
+            if (!name || !message) {
+                alert('الرجاء ملء جميع الحقول');
+                return;
+            }
+            
+            if (WEBHOOK_URL === 'https://discord.com/api/webhooks/1530663733590753442/g4eTeYwPwp8v6GsAVJ9IqtZHk1_QAUwrajA4o4C0EjQyORus1zfA5DkjGFgxY4FOmCHa') {
+                alert('الرجاء إضافة رابط Webhook في الكود');
+                return;
+            }
+            
+            const payload = {
+                content: ` **رسالة جديدة من الموقع!**\n\n👤 **الاسم:** ${name}\n\n💬 **الرسالة:**\n${message}\n\n🕐 **الوقت:** ${new Date().toLocaleString('ar-SA')}`,
+                embeds: [{
+                    title: 'SOKO - تواصل مباشر',
+                    color: 0x00d4ff,
+                    footer: {
+                        text: 'تم الإرسال من الموقع الشخصي'
+                    }
+                }]
+            };
+            
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.ok) {
+                    alert('✅ تم إرسال الرسالة بنجاح!');
+                    document.getElementById('contactName').value = '';
+                    document.getElementById('contactMessage').value = '';
+                } else {
+                    alert('❌ حدث خطأ في الإرسال');
+                }
+            } catch (error) {
+                alert('❌ حدث خطأ: ' + error.message);
+            }
+        }
+
         // Music Player
         const audio = document.getElementById('audioPlayer');
         const musicPlayer = document.getElementById('musicPlayer');
         const playIcon = document.getElementById('playIcon');
         let isPlaying = false;
-
-        function playMusic() {
-            audio.play().then(() => {
-                isPlaying = true;
-                playIcon.classList.remove('fa-play');
-                playIcon.classList.add('fa-pause');
-                musicPlayer.classList.add('playing');
-            }).catch(e => console.log('Auto-play prevented'));
-        }
 
         function toggleMusic() {
             if (isPlaying) {
@@ -1549,7 +1908,6 @@
             document.getElementById('volumeProgress').style.width = (percent * 100) + '%';
         }
 
-        // Set initial volume
         audio.volume = 0.7;
 
         // Prevent zoom on mobile
