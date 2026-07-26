@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SOKO - Gaming World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #7b2cbf;
+            --accent: #ff006e;
+            --gold: #ffd700;
+            --dark: #0a0a0a;
+            --glass: rgba(10, 10, 10, 0.55);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('A.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            line-height: 1.6;
+            touch-action: manipulation;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(var(--dark), var(--dark)) padding-box,
+                        linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            animation: rotate 3s linear infinite;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            background: var(--dark);
+        }
+
+        .loader-logo span {
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.95); }
+        }
+
+        .loader-bar-container {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .loader-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .loader-percentage {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .loader-status {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Marquee */
+        .marquee-container {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite, gradient 5s ease infinite;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--gold), var(--primary));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Header */
+        .header {
+            padding: 30px 20px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(var(--dark), var(--dark)) padding-box,
+                        linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+            object-fit: cover;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+            animation: profileGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes profileGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+            50% { box-shadow: 0 0 60px rgba(123, 44, 191, 0.6); }
+        }
+
+        .clock {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+        }
+
+        .username {
+            font-family: 'Cairo', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+            letter-spacing: 6px;
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 15px 20px;
+            margin: 15px auto;
+            max-width: 1200px;
+            position: sticky;
+            top: 50px;
+            z-index: 99;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-tab:hover::before {
+            left: 100%;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(123, 44, 191, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glass Card with Theme */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 25px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        /* Album Container */
+        .album-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 25px 0;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .album-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .album-slide.active {
+            opacity: 1;
+        }
+
+        .album-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.85));
+        }
+
+        .album-text {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            color: var(--gold);
+            letter-spacing: 2px;
+            width: 90%;
+        }
+
+        .album-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.4);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* Theme Selector */
+        .theme-section {
+            margin-top: 30px;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .theme-card {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            transition: opacity 0.3s;
+        }
+
+        .theme-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .theme-card.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .theme-preview {
+            width: 100%;
+            height: 60px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .theme-name {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Themes Colors */
+        .theme-pink-purple { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
+        .theme-purple-pink { background: linear-gradient(135deg, #a855f7, #ec4899); }
+        .theme-blue-purple { background: linear-gradient(135deg, #3b82f6, #a855f7); }
+        .theme-cyan-pink { background: linear-gradient(135deg, #06b6d4, #ec4899); }
+        .theme-green-cyan { background: linear-gradient(135deg, #10b981, #06b6d4); }
+        .theme-orange-red { background: linear-gradient(135deg, #f97316, #ef4444); }
+        .theme-yellow-orange { background: linear-gradient(135deg, #eab308, #f97316); }
+        .theme-rose-pink { background: linear-gradient(135deg, #fb7185, #f472b6); }
+        .theme-indigo-violet { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .theme-teal-emerald { background: linear-gradient(135deg, #14b8a6, #10b981); }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .about-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .info-value {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .game-item {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 44, 191, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .game-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+            border-color: var(--primary);
+        }
+
+        .game-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .game-name {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        /* Schedule Section */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .schedule-card {
+            background: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+            border-color: var(--primary);
+        }
+
+        .day-name {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .day-time {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .day-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        /* Tips Section */
+        .tips-container {
+            display: grid;
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .tip-card:hover {
+            transform: translateX(-10px);
+            border-color: var(--primary);
+            box-shadow: -5px 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .tip-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .games-category {
+            margin-top: 30px;
+        }
+
+        .category-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 15px 25px;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .music-player::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .music-cover {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            animation: musicRotate 3s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .music-player.playing .music-cover {
+            animation-play-state: running;
+        }
+
+        @keyframes musicRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .music-info {
+            flex: 1;
+        }
+
+        .music-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .music-artist {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .music-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .music-btn.play {
+            width: 50px;
+            height: 50px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 15px;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .volume-progress {
+            height: 100%;
+            width: 70%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .social-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .social-btn.discord { background: linear-gradient(135deg, #5865F2, #4752C4); }
+        .social-btn.tiktok { background: linear-gradient(135deg, #000000, #25F4EE); }
+        .social-btn.spotify { background: linear-gradient(135deg, #1DB954, #1ed760); }
+        .social-btn.roblox { background: linear-gradient(135deg, #de3838, #ff4444); }
+
+        .social-btn:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .username {
+                font-size: 2.2rem;
+            }
+            
+            .album-container {
+                height: 280px;
+            }
+            
+            .theme-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .music-player {
+                flex-wrap: wrap;
+                padding: 12px 15px;
+                gap: 15px;
+            }
+
+            .volume-control {
+                margin-left: 0;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .marquee-content { font-size: 1.2rem; }
+            .profile-img { width: 110px; height: 110px; }
+            .clock { font-size: 1.6rem; }
+            .username { font-size: 2rem; letter-spacing: 3px; }
+            .nav-tab { padding: 9px 15px; font-size: 0.8rem; }
+            .section-title { font-size: 1.6rem; }
+            .album-container { height: 250px; }
+            .schedule-grid { grid-template-columns: repeat(2, 1fr); }
+            .games-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">
+            <span>SOKO</span>
+        </div>
+        <div class="loader-text">SOKO GAMING</div>
+        <div class="loader-bar-container">
+            <div class="loader-bar" id="loaderBar"></div>
+        </div>
+        <div class="loader-percentage" id="loaderPercentage">0%</div>
+        <div class="loader-status" id="loaderStatus">جاري التحميل...</div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            DISCORD SOKO TO PLAY GAMING PHONE ★ SOULS GAMES ★ FIGHTING GAMES ★ PROGRAMMING ★
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="profile-container">
+            <img src="AA.jpg" alt="SOKO Profile" class="profile-img" onerror="this.style.background='linear-gradient(135deg, #00d4ff, #7b2cbf)'">
+        </div>
+        <div class="clock" id="clock">00:00:00</div>
+        <h1 class="username">SOKO</h1>
+        <p class="header-subtitle">Souls & Fighting Games Master</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-section="home">🏠 الرئيسية</button>
+        <button class="nav-tab" data-section="about">👤 نبذة عني</button>
+        <button class="nav-tab" data-section="favorites">⭐ مفضلاتي</button>
+        <button class="nav-tab" data-section="schedule">⏰ أوقات اللعب</button>
+        <button class="nav-tab" data-section="tips">💡 نصائح</button>
+        <button class="nav-tab" data-section="themes">🎨 الثيمات</button>
+        <button class="nav-tab" data-section="social">🔗 تابعني</button>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="section active" id="home">
+        <div class="glass-card">
+            <h2 class="section-title">معرض الألعاب</h2>
+            <div class="album-container" id="albumContainer">
+                <div class="album-slide active" style="background-image: url('A1.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A2.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A3.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A4.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A5.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A6.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A7.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A8.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A9.jpg')"></div>
+                <div class="album-slide" style="background-image: url('A10.jpg')"></div>
+                <div class="album-text" id="albumText">أفضل ألعاب Souls والقتال</div>
+                <div class="album-dots" id="albumDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="glass-card">
+            <h2 class="section-title">نبذة عني</h2>
+            <div class="about-content">
+                <div class="about-info">
+                    <div class="info-item">
+                        <div class="info-label">NAME</div>
+                        <div class="info-value">BAQER</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">LAST NAME</div>
+                        <div class="info-value">SOKO</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">GENDER</div>
+                        <div class="info-value">ONLY-YOURS</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">AGE</div>
+                        <div class="info-value">2010</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">FROM</div>
+                        <div class="info-value">IQ</div>
+                    </div>
+                </div>
+                
+                <div class="games-grid">
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-dragon"></i></div>
+                        <div class="game-name">Horizon</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-ghost"></i></div>
+                        <div class="game-name">Silent Hill</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-skull"></i></div>
+                        <div class="game-name">Resident Evil</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-fire"></i></div>
+                        <div class="game-name">God of War</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-jet-fighter"></i></div>
+                        <div class="game-name">Battlefield</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-fist-raised"></i></div>
+                        <div class="game-name">Mortal Kombat</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
+                        <div class="game-name">Call of Duty</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="game-name">Black Ops</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section class="section" id="favorites">
+        <div class="glass-card">
+            <h2 class="section-title">مفضلاتي</h2>
+            <div class="album-container" id="favoritesContainer">
+                <div class="album-slide active" style="background-image: url('S1.jpg')">
+                    <div class="album-text">Dark Souls III - The ultimate challenge</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S2.jpg')">
+                    <div class="album-text">Elden Ring - Epic adventure awaits</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S3.jpg')">
+                    <div class="album-text">Sekiro - Shadows Die Twice</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S4.jpg')">
+                    <div class="album-text">Bloodborne - Hunt your dreams</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S5.jpg')">
+                    <div class="album-text">Tekken 8 - Fight like never before</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S6.jpg')">
+                    <div class="album-text">Street Fighter 6 - Legend continues</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S7.jpg')">
+                    <div class="album-text">Nioh 2 - Rise from the darkness</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S8.jpg')">
+                    <div class="album-text">Monster Hunter - Hunt or be hunted</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S9.jpg')">
+                    <div class="album-text">Devil May Cry 5 - Stylish action</div>
+                </div>
+                <div class="album-slide" style="background-image: url('S10.jpg')">
+                    <div class="album-text">Ghost of Tsushima - Honor and glory</div>
+                </div>
+                <div class="album-dots" id="favoritesDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="section" id="schedule">
+        <div class="glass-card">
+            <h2 class="section-title">أوقات اللعب</h2>
+            <div class="schedule-grid" id="scheduleGrid">
+                <div class="schedule-card" data-day="0">
+                    <div class="day-icon"><i class="fas fa-sun"></i></div>
+                    <div class="day-name">الأحد</div>
+                    <div class="day-time">10:00 AM - 10:00 PM</div>
+                </div>
+                <div class="schedule-card" data-day="1">
+                    <div class="day-icon"><i class="fas fa-moon"></i></div>
+                    <div class="day-name">الاثنين</div>
+                    <div class="day-time">10:00 AM - 10:00 PM</div>
+                </div>
+                <div class="schedule-card" data-day="2">
+                    <div class="day-icon"><i class="fas fa-star"></i></div>
+                    <div class="day-name">الثلاثاء</div>
+                    <div class="day-time">10:00 AM - 10:00 PM</div>
+                </div>
+                <div class="schedule-card" data-day="3">
+                    <div class="day-icon"><i class="fas fa-fire"></i></div>
+                    <div class="day-name">الأربعاء</div>
+                    <div class="day-time">10:00 AM - 10:00 PM</div>
+                </div>
+                <div class="schedule-card" data-day="4">
+                    <div class="day-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="day-name">الخميس</div>
+                    <div class="day-time">10:00 AM - 10:00 PM</div>
+                </div>
+                <div class="schedule-card" data-day="5">
+                    <div class="day-icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="day-name">الجمعة</div>
+                    <div class="day-time">وقت مفتوح</div>
+                </div>
+                <div class="schedule-card" data-day="6">
+                    <div class="day-icon"><i class="fas fa-crown"></i></div>
+                    <div class="day-name">السبت</div>
+                    <div class="day-time">حسب المتاح</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="section" id="tips">
+        <div class="glass-card">
+            <h2 class="section-title">نصائح حول الألعاب</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <div class="tip-title">
+                        <i class="fas fa-lightbulb"></i>
+                        نصائح لألعاب Souls
+                    </div>
+                    <div class="tip-content">
+                        • تعلم أنماط هجوم الأعداء وكن صبوراً<br>
+                        • استخدم الدرع في الوقت المناسب<br>
+                        • استكشف كل زاوية للعثور على المعدات القوية<br>
+                        • لا تطمع في الضربات المتعددة<br>
+                        • طور شخصيتك حسب أسلوب لعبك
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-title">
+                        <i class="fas fa-trophy"></i>
+                        ألعاب PC الموصى بها
+                    </div>
+                    <div class="tip-content">
+                        • Dark Souls系列 - للتحدي الحقيقي<br>
+                        • Elden Ring - عالم مفتوح مذهل<br>
+                        • Sekiro - قتال سريع ودقيق<br>
+                        • Resident Evil - رعب وبقاء<br>
+                        • God of War - قصة ملحمية
+                    </div>
+                </div>
+
+                <div class="games-category">
+                    <div class="category-title">ألعاب الحرب والقتال</div>
+                    <div class="games-grid">
+                        <div class="game-item">
+                            <div class="game-icon"><i class="fas fa-bomb"></i></div>
+                            <div class="game-name">Battlefield Series</div>
+                        </div>
+                        <div class="game-item">
+                            <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
+                            <div class="game-name">Call of Duty</div>
+                        </div>
+                        <div class="game-item">
+                            <div class="game-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="game-name">Black Ops</div>
+                        </div>
+                        <div class="game-item">
+                            <div class="game-icon"><i class="fas fa-fist-raised"></i></div>
+                            <div class="game-name">Mortal Kombat</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Themes Section -->
+    <section class="section" id="themes">
+        <div class="glass-card">
+            <h2 class="section-title">اختر الثيم</h2>
+            <div class="theme-grid">
+                <div class="theme-card active" data-theme="default" onclick="changeTheme('default')">
+                    <div class="theme-preview theme-blue-purple"></div>
+                    <div class="theme-name">أزرق بنفسجي</div>
+                </div>
+                <div class="theme-card" data-theme="pink-purple" onclick="changeTheme('pink-purple')">
+                    <div class="theme-preview theme-pink-purple"></div>
+                    <div class="theme-name">وردي بنفسجي</div>
+                </div>
+                <div class="theme-card" data-theme="purple-pink" onclick="changeTheme('purple-pink')">
+                    <div class="theme-preview theme-purple-pink"></div>
+                    <div class="theme-name">بنفسجي وردي</div>
+                </div>
+                <div class="theme-card" data-theme="blue-purple" onclick="changeTheme('blue-purple')">
+                    <div class="theme-preview theme-blue-purple"></div>
+                    <div class="theme-name">أزرق بنفسجي</div>
+                </div>
+                <div class="theme-card" data-theme="cyan-pink" onclick="changeTheme('cyan-pink')">
+                    <div class="theme-preview theme-cyan-pink"></div>
+                    <div class="theme-name">سماوي وردي</div>
+                </div>
+                <div class="theme-card" data-theme="green-cyan" onclick="changeTheme('green-cyan')">
+                    <div class="theme-preview theme-green-cyan"></div>
+                    <div class="theme-name">أخضر سماوي</div>
+                </div>
+                <div class="theme-card" data-theme="orange-red" onclick="changeTheme('orange-red')">
+                    <div class="theme-preview theme-orange-red"></div>
+                    <div class="theme-name">برتقالي أحمر</div>
+                </div>
+                <div class="theme-card" data-theme="yellow-orange" onclick="changeTheme('yellow-orange')">
+                    <div class="theme-preview theme-yellow-orange"></div>
+                    <div class="theme-name">أصفر برتقالي</div>
+                </div>
+                <div class="theme-card" data-theme="rose-pink" onclick="changeTheme('rose-pink')">
+                    <div class="theme-preview theme-rose-pink"></div>
+                    <div class="theme-name">وردي فاتح</div>
+                </div>
+                <div class="theme-card" data-theme="indigo-violet" onclick="changeTheme('indigo-violet')">
+                    <div class="theme-preview theme-indigo-violet"></div>
+                    <div class="theme-name">نيلي بنفسجي</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="section" id="social">
+        <div class="glass-card">
+            <h2 class="section-title">تابعني على</h2>
+            <div class="social-links">
+                <a href="#" class="social-btn discord" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="#" class="social-btn tiktok" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="#" class="social-btn spotify" title="Spotify">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="#" class="social-btn roblox" title="Roblox">
+                    <i class="fas fa-cube"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-cover">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="music-info">
+            <div class="music-title">A.mp3</div>
+            <div class="music-artist">SOKO Gaming Mix</div>
+        </div>
+        <div class="music-controls">
+            <button class="music-btn" onclick="toggleMusic()">
+                <i class="fas fa-play" id="playIcon"></i>
+            </button>
+            <div class="volume-control">
+                <i class="fas fa-volume-down" style="color: var(--primary);"></i>
+                <div class="volume-slider" onclick="setVolume(event)">
+                    <div class="volume-progress" id="volumeProgress"></div>
+                </div>
+                <i class="fas fa-volume-up" style="color: var(--primary);"></i>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with <i class="fas fa-heart" style="color: var(--accent);"></i> by SOKO</p>
+    </footer>
+
+    <audio id="audioPlayer" loop>
+        <source src="A.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            let progress = 0;
+            const loaderBar = document.getElementById('loaderBar');
+            const loaderPercentage = document.getElementById('loaderPercentage');
+            const loaderStatus = document.getElementById('loaderStatus');
+            const loader = document.getElementById('loader');
+            
+            const loadingMessages = [
+                'جاري تحميل الموارد...',
+                'إطلاق الأنظمة...',
+                'تحميل بيانات اللعبة...',
+                'تحضير التجربة...',
+                'الإنهاء...'
+            ];
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                loaderBar.style.width = progress + '%';
+                loaderPercentage.textContent = Math.floor(progress) + '%';
+                
+                const messageIndex = Math.floor((progress / 100) * (loadingMessages.length - 1));
+                loaderStatus.textContent = loadingMessages[messageIndex];
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                        // Auto-play music after loading
+                        playMusic();
+                    }, 500);
+                }
+            }, 200);
+        });
+
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.nav-tab');
+        const sections = document.querySelectorAll('.section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetSection = tab.dataset.section;
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(targetSection).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Album Slider Function
+        function initAlbumSlider(containerId, dotsId, textId, texts) {
+            const container = document.getElementById(containerId);
+            const slides = container.querySelectorAll('.album-slide');
+            const dotsContainer = document.getElementById(dotsId);
+            let currentSlide = 0;
+
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (index === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll(`#${dotsId} .dot`);
+
+            function goToSlide(index) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = index;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+                if (textId) {
+                    document.getElementById(textId).textContent = texts[currentSlide];
+                }
+            }
+
+            function nextSlide() {
+                goToSlide((currentSlide + 1) % slides.length);
+            }
+
+            setInterval(nextSlide, 4000);
+        }
+
+        // Initialize Home Album
+        const homeTexts = [
+            'أهلاً بك في عالم SOKO',
+            'Souls Games Master',
+            'Fighting Games Expert',
+            'مبرمج ومحترف ألعاب',
+            'انضم إلينا في Discord',
+            'تابعنا على جميع المنصات',
+            'لحظات لا تُنسى',
+            'Gaming Community',
+            'SOKO Gaming World',
+            'Play Hard, Win Harder'
+        ];
+        initAlbumSlider('albumContainer', 'albumDots', 'albumText', homeTexts);
+
+        // Initialize Favorites Album
+        const favoritesTexts = [
+            'Dark Souls III - The ultimate challenge',
+            'Elden Ring - Epic adventure awaits',
+            'Sekiro - Shadows Die Twice',
+            'Bloodborne - Hunt your dreams',
+            'Tekken 8 - Fight like never before',
+            'Street Fighter 6 - Legend continues',
+            'Nioh 2 - Rise from the darkness',
+            'Monster Hunter - Hunt or be hunted',
+            'Devil May Cry 5 - Stylish action',
+            'Ghost of Tsushima - Honor and glory'
+        ];
+        initAlbumSlider('favoritesContainer', 'favoritesDots', null, favoritesTexts);
+
+        // Theme Changer
+        const themes = {
+            'default': {
+                primary: '#00d4ff',
+                secondary: '#7b2cbf',
+                accent: '#ff006e'
+            },
+            'pink-purple': {
+                primary: '#ec4899',
+                secondary: '#8b5cf6',
+                accent: '#f472b6'
+            },
+            'purple-pink': {
+                primary: '#a855f7',
+                secondary: '#ec4899',
+                accent: '#c084fc'
+            },
+            'blue-purple': {
+                primary: '#3b82f6',
+                secondary: '#a855f7',
+                accent: '#60a5fa'
+            },
+            'cyan-pink': {
+                primary: '#06b6d4',
+                secondary: '#ec4899',
+                accent: '#22d3ee'
+            },
+            'green-cyan': {
+                primary: '#10b981',
+                secondary: '#06b6d4',
+                accent: '#34d399'
+            },
+            'orange-red': {
+                primary: '#f97316',
+                secondary: '#ef4444',
+                accent: '#fb923c'
+            },
+            'yellow-orange': {
+                primary: '#eab308',
+                secondary: '#f97316',
+                accent: '#facc15'
+            },
+            'rose-pink': {
+                primary: '#fb7185',
+                secondary: '#f472b6',
+                accent: '#fda4af'
+            },
+            'indigo-violet': {
+                primary: '#6366f1',
+                secondary: '#8b5cf6',
+                accent: '#818cf8'
+            }
+        };
+
+        function changeTheme(themeName) {
+            const theme = themes[themeName];
+            if (!theme) return;
+            
+            document.documentElement.style.setProperty('--primary', theme.primary);
+            document.documentElement.style.setProperty('--secondary', theme.secondary);
+            document.documentElement.style.setProperty('--accent', theme.accent);
+            
+            // Update active state
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.classList.remove('active');
+                if (card.dataset.theme === themeName) {
+                    card.classList.add('active');
+                }
+            });
+            
+            localStorage.setItem('selectedTheme', themeName);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('selectedTheme');
+        if (savedTheme && themes[savedTheme]) {
+            changeTheme(savedTheme);
+        }
+
+        // Music Player
+        const audio = document.getElementById('audioPlayer');
+        const musicPlayer = document.getElementById('musicPlayer');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
+
+        function playMusic() {
+            audio.play().then(() => {
+                isPlaying = true;
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                musicPlayer.classList.add('playing');
+            }).catch(e => console.log('Auto-play prevented'));
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                musicPlayer.classList.remove('playing');
+            } else {
+                audio.play();
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                musicPlayer.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function setVolume(event) {
+            const slider = event.currentTarget;
+            const rect = slider.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            audio.volume = Math.max(0, Math.min(1, percent));
+            document.getElementById('volumeProgress').style.width = (percent * 100) + '%';
+        }
+
+        // Set initial volume
+        audio.volume = 0.7;
+
+        // Prevent zoom on mobile
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (event) => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        document.addEventListener('gesturestart', (e) => {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
