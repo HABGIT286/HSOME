@@ -1842,10 +1842,7 @@
                 return;
             }
             
-            if (WEBHOOK_URL === 'https://discord.com/api/webhooks/1530663733590753442/g4eTeYwPwp8v6GsAVJ9IqtZHk1_QAUwrajA4o4C0EjQyORus1zfA5DkjGFgxY4FOmCHa') {
-                alert('الرجاء إضافة رابط Webhook في الكود');
-                return;
-            }
+            const WEBHOOK_URL = 'https://discord.com/api/webhooks/1530663733590753442/g4eTeYwPwp8v6GsAVJ9IqtZHk1_QAUwrajA4o4C0EjQyORus1zfA5DkjGFgxY4FOmCHa';
             
             const payload = {
                 content: ` **رسالة جديدة من الموقع!**\n\n👤 **الاسم:** ${name}\n\n💬 **الرسالة:**\n${message}\n\n🕐 **الوقت:** ${new Date().toLocaleString('ar-SA')}`,
