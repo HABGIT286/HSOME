@@ -1504,7 +1504,7 @@
             }
 
             .nav-tab {
-                padding: 10px 18px;
+                padding: 9px 15px;
                 font-size: 0.85rem;
             }
         }
@@ -1526,1043 +1526,562 @@
                 height: 45px;
             }
         }
-    </style>
-</head>
-<body>
-    <!-- Toast Container -->
-    <div class="toast-container" id="toastContainer"></div>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-logo">
-            <span>SOKO</span>
-        </div>
-        <div class="loader-text">SOKO GAMING</div>
-        <div class="loader-bar-container">
-            <div class="loader-bar" id="loaderBar"></div>
-        </div>
-        <div class="loader-percentage" id="loaderPercentage">0%</div>
-        <div class="loader-status" id="loaderStatus">جاري التحميل...</div>
-    </div>
-
-    <!-- Marquee -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            DISCORD SOKO TO PLAY GAMING PHONE ★ SOULS GAMES ★ FIGHTING GAMES ★ PROGRAMMING ★
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="profile-container">
-            <img src="AA.jpg" alt="SOKO Profile" class="profile-img" onerror="this.style.background='linear-gradient(135deg, #00d4ff, #7b2cbf)'">
-        </div>
-        <div class="clock-date" id="clockDate">January 1, 2024 - Monday</div>
-        <div class="clock" id="clock">00:00:00</div>
-        <h1 class="username">SOKO</h1>
-        <p class="header-subtitle">Souls & Fighting Games Master</p>
-    </header>
-
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs">
-        <button class="nav-tab active" data-section="home">
-            <i class="fas fa-home"></i>
-            الرئيسية
-        </button>
-        <button class="nav-tab" data-section="about">
-            <i class="fas fa-user"></i>
-            نبذة عني
-        </button>
-        <button class="nav-tab" data-section="favorites">
-            <i class="fas fa-star"></i>
-            مفضلاتي
-        </button>
-        <button class="nav-tab" data-section="schedule">
-            <i class="fas fa-clock"></i>
-            أوقات اللعب
-        </button>
-        <button class="nav-tab" data-section="tips">
-            <i class="fas fa-lightbulb"></i>
-            نصائح
-        </button>
-        <button class="nav-tab" data-section="lighting">
-            <i class="fas fa-lightbulb"></i>
-            الإضاءة
-        </button>
-        <button class="nav-tab" data-section="themes">
-            <i class="fas fa-palette"></i>
-            الثيمات
-        </button>
-        <button class="nav-tab" data-section="contact">
-            <i class="fas fa-envelope"></i>
-            تواصل مباشر
-        </button>
-        <button class="nav-tab" data-section="social">
-            <i class="fas fa-link"></i>
-            تابعني
-        </button>
-    </nav>
-
-    <!-- Home Section -->
-    <section class="section active" id="home">
-        <div class="glass-card">
-            <h2 class="section-title">معرض الألعاب</h2>
-            <div class="album-container" id="albumContainer">
-                <div class="album-slide active" style="background-image: url('A1.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A2.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A3.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A4.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A5.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A6.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A7.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A8.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A9.jpg')"></div>
-                <div class="album-slide" style="background-image: url('A10.jpg')"></div>
-                <div class="album-text" id="albumText">أفضل ألعاب Souls والقتال</div>
-                <div class="album-dots" id="albumDots"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="glass-card">
-            <h2 class="section-title">نبذة عني</h2>
-            <div class="about-content">
-                <div class="about-info">
-                    <div class="info-item">
-                        <div class="info-label">NAME</div>
-                        <div class="info-value">BAQER</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">LAST NAME</div>
-                        <div class="info-value">SOKO</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">GENDER</div>
-                        <div class="info-value">ONLY-YOURS</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">AGE</div>
-                        <div class="info-value">2010</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">FROM</div>
-                        <div class="info-value">IQ</div>
-                    </div>
-                </div>
-                
-                <div class="games-grid">
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-dragon"></i></div>
-                        <div class="game-name">Horizon</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-ghost"></i></div>
-                        <div class="game-name">Silent Hill</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-skull"></i></div>
-                        <div class="game-name">Resident Evil</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-fire"></i></div>
-                        <div class="game-name">God of War</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-jet-fighter"></i></div>
-                        <div class="game-name">Battlefield</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-fist-raised"></i></div>
-                        <div class="game-name">Mortal Kombat</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
-                        <div class="game-name">Call of Duty</div>
-                    </div>
-                    <div class="game-item">
-                        <div class="game-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="game-name">Black Ops</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Favorites Section -->
-    <section class="section" id="favorites">
-        <div class="glass-card">
-            <h2 class="section-title">مفضلاتي</h2>
-            <div class="album-container" id="favoritesContainer">
-                <div class="album-slide active" style="background-image: url('S1.jpg')">
-                    <div class="album-text">Dark Souls III - The ultimate challenge</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S2.jpg')">
-                    <div class="album-text">Elden Ring - Epic adventure awaits</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S3.jpg')">
-                    <div class="album-text">Sekiro - Shadows Die Twice</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S4.jpg')">
-                    <div class="album-text">Bloodborne - Hunt your dreams</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S5.jpg')">
-                    <div class="album-text">Tekken 8 - Fight like never before</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S6.jpg')">
-                    <div class="album-text">Street Fighter 6 - Legend continues</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S7.jpg')">
-                    <div class="album-text">Nioh 2 - Rise from the darkness</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S8.jpg')">
-                    <div class="album-text">Monster Hunter - Hunt or be hunted</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S9.jpg')">
-                    <div class="album-text">Devil May Cry 5 - Stylish action</div>
-                </div>
-                <div class="album-slide" style="background-image: url('S10.jpg')">
-                    <div class="album-text">Ghost of Tsushima - Honor and glory</div>
-                </div>
-                <div class="album-dots" id="favoritesDots"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section class="section" id="schedule">
-        <div class="glass-card">
-            <h2 class="section-title">أوقات اللعب</h2>
-            <div class="schedule-grid" id="scheduleGrid">
-                <div class="schedule-card" data-day="0">
-                    <div class="day-icon"><i class="fas fa-sun"></i></div>
-                    <div class="day-name">الأحد</div>
-                    <div class="day-time">10:00 AM - 10:00 PM</div>
-                </div>
-                <div class="schedule-card" data-day="1">
-                    <div class="day-icon"><i class="fas fa-moon"></i></div>
-                    <div class="day-name">الاثنين</div>
-                    <div class="day-time">10:00 AM - 10:00 PM</div>
-                </div>
-                <div class="schedule-card" data-day="2">
-                    <div class="day-icon"><i class="fas fa-star"></i></div>
-                    <div class="day-name">الثلاثاء</div>
-                    <div class="day-time">10:00 AM - 10:00 PM</div>
-                </div>
-                <div class="schedule-card" data-day="3">
-                    <div class="day-icon"><i class="fas fa-fire"></i></div>
-                    <div class="day-name">الأربعاء</div>
-                    <div class="day-time">10:00 AM - 10:00 PM</div>
-                </div>
-                <div class="schedule-card" data-day="4">
-                    <div class="day-icon"><i class="fas fa-bolt"></i></div>
-                    <div class="day-name">الخميس</div>
-                    <div class="day-time">10:00 AM - 10:00 PM</div>
-                </div>
-                <div class="schedule-card" data-day="5">
-                    <div class="day-icon"><i class="fas fa-gamepad"></i></div>
-                    <div class="day-name">الجمعة</div>
-                    <div class="day-time">وقت مفتوح</div>
-                </div>
-                <div class="schedule-card" data-day="6">
-                    <div class="day-icon"><i class="fas fa-crown"></i></div>
-                    <div class="day-name">السبت</div>
-                    <div class="day-time">حسب المتاح</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tips Section -->
-    <section class="section" id="tips">
-        <div class="glass-card">
-            <h2 class="section-title">نصائح حول الألعاب</h2>
-            <div class="tips-container">
-                <div class="tip-card">
-                    <div class="tip-title">
-                        <i class="fas fa-lightbulb"></i>
-                        نصائح لألعاب Souls
-                    </div>
-                    <div class="tip-content">
-                        • تعلم أنماط هجوم الأعداء وكن صبوراً<br>
-                        • استخدم الدرع في الوقت المناسب<br>
-                        • استكشف كل زاوية للعثور على المعدات القوية<br>
-                        • لا تطمع في الضربات المتعددة<br>
-                        • طور شخصيتك حسب أسلوب لعبك
-                    </div>
-                </div>
-                
-                <div class="tip-card">
-                    <div class="tip-title">
-                        <i class="fas fa-trophy"></i>
-                        ألعاب PC الموصى بها
-                    </div>
-                    <div class="tip-content">
-                        • Dark Souls系列 - للتحدي الحقيقي<br>
-                        • Elden Ring - عالم مفتوح مذهل<br>
-                        • Sekiro - قتال سريع ودقيق<br>
-                        • Resident Evil - رعب وبقاء<br>
-                        • God of War - قصة ملحمية
-                    </div>
-                </div>
-
-                <div class="games-category">
-                    <div class="category-title">ألعاب الحرب والقتال</div>
-                    <div class="games-grid">
-                        <div class="game-item">
-                            <div class="game-icon"><i class="fas fa-bomb"></i></div>
-                            <div class="game-name">Battlefield Series</div>
-                        </div>
-                        <div class="game-item">
-                            <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
-                            <div class="game-name">Call of Duty</div>
-                        </div>
-                        <div class="game-item">
-                            <div class="game-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="game-name">Black Ops</div>
-                        </div>
-                        <div class="game-item">
-                            <div class="game-icon"><i class="fas fa-fist-raised"></i></div>
-                            <div class="game-name">Mortal Kombat</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lighting Section -->
-    <section class="section" id="lighting">
-        <div class="glass-card">
-            <h2 class="section-title">الإضاءة</h2>
-            <div class="lighting-grid">
-                <div class="lighting-card" data-light="#ffffff" onclick="changeLighting('#ffffff', 'أبيض')">
-                    <div class="lighting-color" style="background: #ffffff;"></div>
-                    <div class="lighting-name">أبيض</div>
-                </div>
-                <div class="lighting-card" data-light="#000000" onclick="changeLighting('#000000', 'أسود')">
-                    <div class="lighting-color" style="background: #000000; border: 2px solid rgba(255,255,255,0.3);"></div>
-                    <div class="lighting-name">أسود</div>
-                </div>
-                <div class="lighting-card" data-light="#ffd700" onclick="changeLighting('#ffd700', 'أصفر')">
-                    <div class="lighting-color" style="background: #ffd700;"></div>
-                    <div class="lighting-name">أصفر</div>
-                </div>
-                <div class="lighting-card" data-light="#10b981" onclick="changeLighting('#10b981', 'أخضر')">
-                    <div class="lighting-color" style="background: #10b981;"></div>
-                    <div class="lighting-name">أخضر</div>
-                </div>
-                <div class="lighting-card" data-light="#06b6d4" onclick="changeLighting('#06b6d4', 'سماوي')">
-                    <div class="lighting-color" style="background: #06b6d4;"></div>
-                    <div class="lighting-name">سماوي</div>
-                </div>
-                <div class="lighting-card" data-light="#ef4444" onclick="changeLighting('#ef4444', 'أحمر')">
-                    <div class="lighting-color" style="background: #ef4444;"></div>
-                    <div class="lighting-name">أحمر</div>
-                </div>
-                <div class="lighting-card" data-light="#a855f7" onclick="changeLighting('#a855f7', 'بنفسجي')">
-                    <div class="lighting-color" style="background: #a855f7;"></div>
-                    <div class="lighting-name">بنفسجي</div>
-                </div>
-                <div class="lighting-card" data-light="#14b8a6" onclick="changeLighting('#14b8a6', 'تركوازي')">
-                    <div class="lighting-color" style="background: #14b8a6;"></div>
-                    <div class="lighting-name">تركوازي</div>
-                </div>
-                <div class="lighting-card" data-light="#6b7280" onclick="changeLighting('#6b7280', 'رصاصي')">
-                    <div class="lighting-color" style="background: #6b7280;"></div>
-                    <div class="lighting-name">رصاصي</div>
-                </div>
-                <div class="lighting-card" data-light="#ec4899" onclick="changeLighting('#ec4899', 'وردي')">
-                    <div class="lighting-color" style="background: #ec4899;"></div>
-                    <div class="lighting-name">وردي</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Themes Section - Enhanced with Advanced Lighting Effects -->
-    <section class="section" id="themes">
-        <div class="glass-card">
-            <h2 class="section-title">الثيمات المتقدمة</h2>
-            
-            <div class="themes-container">
-                <!-- Color Picker -->
-                <div class="color-picker-section">
-                    <label class="color-picker-label">
-                        <i class="fas fa-palette"></i>
-                        اختر لون الإضاءة:
-                    </label>
-                    <div class="color-picker-wrapper">
-                        <button class="color-btn active" data-color="#00d4ff" onclick="changeColor('#00d4ff')"></button>
-                        <button class="color-btn" data-color="#ff006e" onclick="changeColor('#ff006e')"></button>
-                        <button class="color-btn" data-color="#ffd700" onclick="changeColor('#ffd700')"></button>
-                        <button class="color-btn" data-color="#10b981" onclick="changeColor('#10b981')"></button>
-                        <button class="color-btn" data-color="#a855f7" onclick="changeColor('#a855f7')"></button>
-                        <button class="color-btn" data-color="#ef4444" onclick="changeColor('#ef4444')"></button>
-                        <button class="color-btn" data-color="#06b6d4" onclick="changeColor('#06b6d4')"></button>
-                        <button class="color-btn" data-color="#ffffff" onclick="changeColor('#ffffff')"></button>
-                        <button class="color-btn" data-color="#f97316" onclick="changeColor('#f97316')"></button>
-                        <button class="color-btn" data-color="#ec4899" onclick="changeColor('#ec4899')"></button>
-                    </div>
-                </div>
-
-                <!-- Effects Toggles -->
-                <div class="effects-toggles">
-                    <div class="effect-toggle active" onclick="toggleEffect('rgb-border', this)">
-                        <div class="effect-info">
-                            <i class="fas fa-border-all"></i>
-                            <span class="effect-name">1. حدود RGB متحركة</span>
-                        </div>
-                        <div class="toggle-switch"></div>
-                    </div>
-
-                    <div class="effect-toggle" onclick="toggleEffect('spotlight', this)">
-                        <div class="effect-info">
-                            <i class="fas fa-mouse-pointer"></i>
-                            <span class="effect-name">2. كشاف الماوس</span>
-                        </div>
-                        <div class="toggle-switch"></div>
-                    </div>
-
-                    <div class="effect-toggle active" onclick="toggleEffect('ambient', this)">
-                        <div class="effect-info">
-                            <i class="fas fa-globe"></i>
-                            <span class="effect-name">3. توهج محيطي</span>
-                        </div>
-                        <div class="toggle-switch"></div>
-                    </div>
-
-                    <div class="effect-toggle" onclick="toggleEffect('holographic', this)">
-                        <div class="effect-info">
-                            <i class="fas fa-gem"></i>
-                            <span class="effect-name">4. لمعان هولوغرام</span>
-                        </div>
-                        <div class="toggle-switch"></div>
-                    </div>
-
-                    <div class="effect-toggle" onclick="toggleEffect('pulse', this)">
-                        <div class="effect-info">
-                            <i class="fas fa-heartbeat"></i>
-                            <span class="effect-name">5. نبض موسيقي</span>
-                        </div>
-                        <div class="toggle-switch"></div>
-                    </div>
-
-                    <div class="effect-toggle" onclick="toggleEffect('particles', this)">
-                        <div class="effect-info">
-                            <i class="fas fa-sparkles"></i>
-                            <span class="effect-name">6. جسيمات ضوئية</span>
-                        </div>
-                        <div class="toggle-switch"></div>
-                    </div>
-                </div>
-
-                <!-- Theme Selector -->
-                <div style="margin-top: 30px;">
-                    <h3 style="font-family: 'Orbitron', sans-serif; color: var(--gold); margin-bottom: 20px; text-align: center;">
-                        <i class="fas fa-layer-group"></i>
-                        اختر الثيم
-                    </h3>
-                    <div class="theme-grid">
-                        <div class="theme-card active" data-theme="default" onclick="changeTheme('default')">
-                            <div class="theme-preview theme-blue-purple"></div>
-                            <div class="theme-name">أزرق بنفسجي</div>
-                        </div>
-                        <div class="theme-card" data-theme="pink-purple" onclick="changeTheme('pink-purple')">
-                            <div class="theme-preview theme-pink-purple"></div>
-                            <div class="theme-name">وردي بنفسجي</div>
-                        </div>
-                        <div class="theme-card" data-theme="purple-pink" onclick="changeTheme('purple-pink')">
-                            <div class="theme-preview theme-purple-pink"></div>
-                            <div class="theme-name">بنفسجي وردي</div>
-                        </div>
-                        <div class="theme-card" data-theme="cyan-pink" onclick="changeTheme('cyan-pink')">
-                            <div class="theme-preview theme-cyan-pink"></div>
-                            <div class="theme-name">سماوي وردي</div>
-                        </div>
-                        <div class="theme-card" data-theme="green-cyan" onclick="changeTheme('green-cyan')">
-                            <div class="theme-preview theme-green-cyan"></div>
-                            <div class="theme-name">أخضر سماوي</div>
-                        </div>
-                        <div class="theme-card" data-theme="orange-red" onclick="changeTheme('orange-red')">
-                            <div class="theme-preview theme-orange-red"></div>
-                            <div class="theme-name">برتقالي أحمر</div>
-                        </div>
-                        <div class="theme-card" data-theme="yellow-orange" onclick="changeTheme('yellow-orange')">
-                            <div class="theme-preview theme-yellow-orange"></div>
-                            <div class="theme-name">أصفر برتقالي</div>
-                        </div>
-                        <div class="theme-card" data-theme="rose-pink" onclick="changeTheme('rose-pink')">
-                            <div class="theme-preview theme-rose-pink"></div>
-                            <div class="theme-name">وردي فاتح</div>
-                        </div>
-                        <div class="theme-card" data-theme="indigo-violet" onclick="changeTheme('indigo-violet')">
-                            <div class="theme-preview theme-indigo-violet"></div>
-                            <div class="theme-name">نيلي بنفسجي</div>
-                        </div>
-                        <div class="theme-card" data-theme="teal-emerald" onclick="changeTheme('teal-emerald')">
-                            <div class="theme-preview theme-teal-emerald"></div>
-                            <div class="theme-name">تركوازي زمردي</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="glass-card">
-            <h2 class="section-title">تواصل مباشر</h2>
-            <div class="contact-form">
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="fas fa-user"></i>
-                        الاسم
-                    </label>
-                    <input type="text" class="form-input" id="contactName" placeholder="اكتب اسمك هنا...">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="fas fa-envelope"></i>
-                        الرسالة
-                    </label>
-                    <textarea class="form-textarea" id="contactMessage" placeholder="اكتب رسالتك هنا..."></textarea>
-                </div>
-                <button class="submit-btn" onclick="sendContactMessage()">
-                    <i class="fas fa-paper-plane"></i>
-                    إرسال الرسالة
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Section -->
-    <section class="section" id="social">
-        <div class="glass-card">
-            <h2 class="section-title">تابعني على</h2>
-            <div class="social-links">
-                <a href="https://discord.com/users/1487837632716079344" class="social-btn discord" title="Discord">
-                    <i class="fab fa-discord"></i>
-                </a>
-                <a href="https://www.tiktok.com/@40.tnt?_r=1&_t=ZS-98M3vVaZEJu" class="social-btn tiktok" title="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://open.spotify.com/user/31rcvnqojr2aqaulzb77jqv5u7de?si=OpPQgGIhRyidL8-Q4QqEaw&utm_source=copy-link" class="social-btn spotify" title="Spotify">
-                    <i class="fab fa-spotify"></i>
-                </a>
-                <a href="https://www.roblox.com/share?code=11139a57b7830d4f8d14e0e9481923bb&type=Profile&source=ProfileShare&stamp=1785068907090" class="social-btn roblox" title="Roblox">
-                    <i class="fas fa-cube"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Music Player -->
-    <div class="music-player" id="musicPlayer">
-        <div class="music-cover">
-            <i class="fas fa-music"></i>
-        </div>
-        <div class="music-info">
-            <div class="music-title">A.mp3</div>
-            <div class="music-artist">SOKO Gaming Mix</div>
-        </div>
-        <div class="music-controls">
-            <button class="music-btn play" onclick="toggleMusic()">
-                <i class="fas fa-play" id="playIcon"></i>
-            </button>
-            <div class="volume-control">
-                <i class="fas fa-volume-down" style="color: var(--primary);"></i>
-                <div class="volume-slider" onclick="setVolume(event)">
-                    <div class="volume-progress" id="volumeProgress"></div>
-                </div>
-                <i class="fas fa-volume-up" style="color: var(--primary);"></i>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p>SOKO Gaming World © 2024</p>
-    </footer>
-
-    <audio id="audioPlayer" loop>
-        <source src="A.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        // Configuration
-        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1530663733590753442/g4eTeYwPwp8v6GsAVJ9IqtZHk1_QAUwrajA4o4C0EjQyORus1zfA5DkjGFgxY4FOmCHa';
-
-        // Toast Notification System
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-            
-            toast.innerHTML = `
-                <i class="fas ${icon} toast-icon"></i>
-                <span class="toast-message">${message}</span>
-            `;
-            
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.remove();
-            }, 4000);
+        /* ✨ NEW EFFECTS FROM SOKO IDEA LAB ✨ */
+        /* Text Effects */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        // Loader
-        window.addEventListener('load', () => {
-            let progress = 0;
-            const loaderBar = document.getElementById('loaderBar');
-            const loaderPercentage = document.getElementById('loaderPercentage');
-            const loaderStatus = document.getElementById('loaderStatus');
-            const loader = document.getElementById('loader');
-            
-            const loadingMessages = [
-                'جاري تحميل الموارد...',
-                'إطلاق الأنظمة...',
-                'تحميل بيانات اللعبة...',
-                'تحضير التجربة...',
-                'الإنهاء...'
-            ];
-            
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress > 100) progress = 100;
-                
-                loaderBar.style.width = progress + '%';
-                loaderPercentage.textContent = Math.floor(progress) + '%';
-                
-                const messageIndex = Math.floor((progress / 100) * (loadingMessages.length - 1));
-                loaderStatus.textContent = loadingMessages[messageIndex];
-                
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        loader.classList.add('hidden');
-                    }, 500);
-                }
-            }, 200);
-        });
-
-        // Tab Navigation
-        const tabs = document.querySelectorAll('.nav-tab');
-        const sections = document.querySelectorAll('.section');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetSection = tab.dataset.section;
-                
-                tabs.forEach(t => t.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(targetSection).classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // Clock - 12 Hour Format with Date
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
-            
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                          'July', 'August', 'September', 'October', 'November', 'December'];
-            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            
-            const dateStr = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} - ${days[now.getDay()]}`;
-            document.getElementById('clockDate').textContent = dateStr;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // Album Slider Function
-        function initAlbumSlider(containerId, dotsId, textId, texts) {
-            const container = document.getElementById(containerId);
-            const slides = container.querySelectorAll('.album-slide');
-            const dotsContainer = document.getElementById(dotsId);
-            let currentSlide = 0;
-
-            slides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.className = 'dot' + (index === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = document.querySelectorAll(`#${dotsId} .dot`);
-
-            function goToSlide(index) {
-                slides[currentSlide].classList.remove('active');
-                dots[currentSlide].classList.remove('active');
-                currentSlide = index;
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-                if (textId) {
-                    document.getElementById(textId).textContent = texts[currentSlide];
-                }
-            }
-
-            function nextSlide() {
-                goToSlide((currentSlide + 1) % slides.length);
-            }
-
-            setInterval(nextSlide, 4000);
+        .text-glow {
+            text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
         }
 
-        // Initialize Home Album
-        const homeTexts = [
-            'أهلاً بك في عالم SOKO',
-            'Souls Games Master',
-            'Fighting Games Expert',
-            'مبرمج ومحترف ألعاب',
-            'انضم إلينا في Discord',
-            'تابعنا على جميع المنصات',
-            'لحظات لا تُنسى',
-            'Gaming Community',
-            'SOKO Gaming World',
-            'Play Hard, Win Harder'
-        ];
-        initAlbumSlider('albumContainer', 'albumDots', 'albumText', homeTexts);
-
-        // Initialize Favorites Album
-        const favoritesTexts = [
-            'Dark Souls III - The ultimate challenge',
-            'Elden Ring - Epic adventure awaits',
-            'Sekiro - Shadows Die Twice',
-            'Bloodborne - Hunt your dreams',
-            'Tekken 8 - Fight like never before',
-            'Street Fighter 6 - Legend continues',
-            'Nioh 2 - Rise from the darkness',
-            'Monster Hunter - Hunt or be hunted',
-            'Devil May Cry 5 - Stylish action',
-            'Ghost of Tsushima - Honor and glory'
-        ];
-        initAlbumSlider('favoritesContainer', 'favoritesDots', null, favoritesTexts);
-
-        // Theme Changer
-        const themes = {
-            'default': {
-                primary: '#00d4ff',
-                secondary: '#7b2cbf',
-                accent: '#ff006e'
-            },
-            'pink-purple': {
-                primary: '#ec4899',
-                secondary: '#8b5cf6',
-                accent: '#f472b6'
-            },
-            'purple-pink': {
-                primary: '#a855f7',
-                secondary: '#ec4899',
-                accent: '#c084fc'
-            },
-            'blue-purple': {
-                primary: '#3b82f6',
-                secondary: '#a855f7',
-                accent: '#60a5fa'
-            },
-            'cyan-pink': {
-                primary: '#06b6d4',
-                secondary: '#ec4899',
-                accent: '#22d3ee'
-            },
-            'green-cyan': {
-                primary: '#10b981',
-                secondary: '#06b6d4',
-                accent: '#34d399'
-            },
-            'orange-red': {
-                primary: '#f97316',
-                secondary: '#ef4444',
-                accent: '#fb923c'
-            },
-            'yellow-orange': {
-                primary: '#eab308',
-                secondary: '#f97316',
-                accent: '#facc15'
-            },
-            'rose-pink': {
-                primary: '#fb7185',
-                secondary: '#f472b6',
-                accent: '#fda4af'
-            },
-            'indigo-violet': {
-                primary: '#6366f1',
-                secondary: '#8b5cf6',
-                accent: '#818cf8'
-            },
-            'teal-emerald': {
-                primary: '#14b8a6',
-                secondary: '#10b981',
-                accent: '#2dd4bf'
-            }
-        };
-
-        function changeTheme(themeName) {
-            const theme = themes[themeName];
-            if (!theme) return;
-            
-            document.documentElement.style.setProperty('--primary', theme.primary);
-            document.documentElement.style.setProperty('--secondary', theme.secondary);
-            document.documentElement.style.setProperty('--accent', theme.accent);
-            
-            // Update glow color
-            document.documentElement.style.setProperty('--glow-color', theme.primary + '80');
-            
-            document.querySelectorAll('.theme-card').forEach(card => {
-                card.classList.remove('active');
-                if (card.dataset.theme === themeName) {
-                    card.classList.add('active');
-                }
-            });
-            
-            localStorage.setItem('selectedTheme', themeName);
+        .text-pulse {
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        // Load saved theme
-        const savedTheme = localStorage.getItem('selectedTheme');
-        if (savedTheme && themes[savedTheme]) {
-            changeTheme(savedTheme);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
-        // Lighting Effects System
-        let currentColor = '#00d4ff';
-        let activeEffects = {
-            'rgb-border': true,
-            'spotlight': false,
-            'ambient': true,
-            'holographic': false,
-            'pulse': false,
-            'particles': false
-        };
-
-        function changeColor(color) {
-            currentColor = color;
-            document.documentElement.style.setProperty('--light-color', color);
-            document.documentElement.style.setProperty('--glow-color', color + '80');
-            
-            // Update active button
-            document.querySelectorAll('.color-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.color === color) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Update all cards with effects
-            updateAllCards();
+        .text-3d {
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
-        function toggleEffect(effectName, element) {
-            activeEffects[effectName] = !activeEffects[effectName];
-            element.classList.toggle('active');
-            updateAllCards();
-            
-            // If enabling particles, create them
-            if (effectName === 'particles' && activeEffects[effectName]) {
-                createParticles();
+        .text-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .text-shake {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Glass Card Effects */
+        .glass-card.glow {
+            box-shadow: 0 0 40px var(--glow-color), inset 0 0 30px var(--glow-color);
+        }
+
+        .glass-card.pulse {
+            animation: cardPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes cardPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Button Effects */
+        .btn-glow {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .btn-pulse {
+            animation: btnPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s ease-out;
+        }
+
+        @keyframes ripple {
+            to {
+                width: 400px;
+                height: 400px;
+                opacity: 0;
             }
         }
 
-        function updateAllCards() {
-            const cards = document.querySelectorAll('.glass-card');
-            cards.forEach(card => {
-                // Remove all effect classes
-                card.classList.remove('effect-rgb-border', 'effect-spotlight', 
-                                     'effect-ambient', 'effect-holographic', 
-                                     'effect-pulse', 'effect-particles');
-                
-                // Add active effect classes
-                if (activeEffects['rgb-border']) card.classList.add('effect-rgb-border', 'active');
-                if (activeEffects['spotlight']) card.classList.add('effect-spotlight', 'active');
-                if (activeEffects['ambient']) card.classList.add('effect-ambient', 'active');
-                if (activeEffects['holographic']) card.classList.add('effect-holographic', 'active');
-                if (activeEffects['pulse']) card.classList.add('effect-pulse', 'active');
-                if (activeEffects['particles']) card.classList.add('effect-particles', 'active');
-            });
+        /* Particle Effects */
+        .particles-container {
+            position: relative;
+            overflow: hidden;
         }
 
-        function createParticles() {
-            const cards = document.querySelectorAll('.glass-card.effect-particles');
-            cards.forEach(card => {
-                // Clear existing particles
-                card.querySelectorAll('.particle').forEach(p => p.remove());
-                
-                // Create new particles
-                for (let i = 0; i < 15; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 3 + 's';
-                    particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                    card.appendChild(particle);
-                }
-            });
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--light-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 3s ease-in-out infinite;
         }
 
-        // Mouse tracking for spotlight effect
-        document.addEventListener('mousemove', (e) => {
-            if (!activeEffects['spotlight']) return;
-            
-            document.querySelectorAll('.glass-card.effect-spotlight').forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                // Create or update spotlight
-                let spotlight = card.querySelector('.spotlight-element');
-                if (!spotlight) {
-                    spotlight = document.createElement('div');
-                    spotlight.className = 'spotlight-element';
-                    card.appendChild(spotlight);
-                }
-                
-                spotlight.style.left = x + 'px';
-                spotlight.style.top = y + 'px';
-            });
-        });
+        @keyframes floatParticle {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
 
-        // Lighting Changer
-        function changeLighting(color, name) {
-            document.documentElement.style.setProperty('--glow-color', color + '80');
-            
-            document.querySelectorAll('.lighting-card').forEach(card => {
-                card.classList.remove('active');
-                card.style.setProperty('--light-color', 'transparent');
-            });
-            
-            const activeCard = document.querySelector(`.lighting-card[data-light="${color}"]`);
-            if (activeCard) {
-                activeCard.classList.add('active');
-                activeCard.style.setProperty('--light-color', color);
+        /* Theme Switcher Effects */
+        .theme-switcher {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-switcher::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+
+        .theme-switcher:hover::before {
+            opacity: 0.2;
+        }
+
+        /* New Animations from SOKO IDEA LAB */
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .zoom-in {
+            animation: zoomIn 0.6s ease-out forwards;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .pulse-effect {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* New Glass Card with SOKO Effects */
+        .glass-card.soko-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card.soko-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+
+        .glass-card.soko-effect:hover::before {
+            opacity: 0.2;
+        }
+
+        .glass-card.soko-effect:hover {
+            box-shadow: 0 0 60px var(--glow-color), inset 0 0 40px var(--glow-color);
+        }
+
+        /* New Text Effects */
+        .text-3d-shadow {
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .text-glow-shadow {
+            text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+        }
+
+        .text-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-ripple::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            animation: ripple 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to { transform: translateX(100%); }
+        }
+
+        /* New Button Effects */
+        .btn-ripple-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-ripple-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s ease-out;
+        }
+
+        @keyframes ripple {
+            to {
+                width: 400px;
+                height: 400px;
+                opacity: 0;
             }
-            
-            localStorage.setItem('selectedLighting', color);
         }
 
-        // Load saved lighting
-        const savedLighting = localStorage.getItem('selectedLighting');
-        if (savedLighting) {
-            changeLighting(savedLighting, '');
+        /* New Card Effects */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
         }
 
-        // Contact Form - Discord Webhook with Toast
-        async function sendContactMessage() {
-            const name = document.getElementById('contactName').value.trim();
-            const message = document.getElementById('contactMessage').value.trim();
-            
-            if (!name || !message) {
-                showToast('الرجاء ملء جميع الحقول', 'error');
-                return;
-            }
-            
-            const payload = {
-                content: ` **رسالة جديدة من الموقع!**\n\n **الاسم:** ${name}\n\n💬 **الرسالة:**\n${message}\n\n🕐 **الوقت:** ${new Date().toLocaleString('ar-SA')}`,
-                embeds: [{
-                    title: 'SOKO - تواصل مباشر',
-                    color: 0x00d4ff,
-                    footer: {
-                        text: 'تم الإرسال من الموقع الشخصي'
-                    }
-                }]
-            };
-            
-            try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (response.ok) {
-                    showToast('✅ تم إرسال الرسالة بنجاح!', 'success');
-                    document.getElementById('contactName').value = '';
-                    document.getElementById('contactMessage').value = '';
-                } else {
-                    showToast('❌ حدث خطأ في الإرسال', 'error');
-                }
-            } catch (error) {
-                showToast('❌ حدث خطأ: ' + error.message, 'error');
-            }
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg);
         }
 
-        // Music Player
-        const audio = document.getElementById('audioPlayer');
-        const musicPlayer = document.getElementById('musicPlayer');
-        const playIcon = document.getElementById('playIcon');
-        let isPlaying = false;
-
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                playIcon.classList.remove('fa-pause');
-                playIcon.classList.add('fa-play');
-                musicPlayer.classList.remove('playing');
-                
-                // Stop pulse effect if music stops
-                if (activeEffects['pulse']) {
-                    document.querySelectorAll('.glass-card').forEach(card => {
-                        card.style.animationPlayState = 'paused';
-                    });
-                }
-            } else {
-                audio.play();
-                playIcon.classList.remove('fa-play');
-                playIcon.classList.add('fa-pause');
-                musicPlayer.classList.add('playing');
-                
-                // Start pulse effect if music plays
-                if (activeEffects['pulse']) {
-                    document.querySelectorAll('.glass-card').forEach(card => {
-                        card.style.animationPlayState = 'running';
-                    });
-                }
-            }
-            isPlaying = !isPlaying;
+        .card-glow {
+            box-shadow: 0 0 30px var(--glow-color);
         }
 
-        function setVolume(event) {
-            const slider = event.currentTarget;
-            const rect = slider.getBoundingClientRect();
-            const percent = (event.clientX - rect.left) / rect.width;
-            audio.volume = Math.max(0, Math.min(1, percent));
-            document.getElementById('volumeProgress').style.width = (percent * 100) + '%';
+        .card-pulse {
+            animation: cardPulse 2s ease-in-out infinite;
         }
 
-        audio.volume = 0.7;
+        @keyframes cardPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
-        // Initialize
-        updateAllCards();
+        /* New Section Effects */
+        .section.soko-effect {
+            animation: sectionFadeIn 0.8s ease-in forwards;
+        }
 
-        // Prevent zoom on mobile
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', (event) => {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        document.addEventListener('gesturestart', (e) => {
-            e.preventDefault();
-        });
-    </script>
-</body>
-</html>
+        /* New Loading Effects */
+        .loader.soko-effect {
+            animation: loaderFadeIn 0.8s ease-in forwards;
+        }
+
+        @keyframes loaderFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* New Toast Effects */
+        .toast.soko-effect {
+            animation: toastSlideIn 0.5s ease-out, toastFadeOut 0.5s ease-in 3.5s forwards;
+        }
+
+        @keyframes toastSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes toastFadeOut {
+            to { opacity: 0; transform: translateY(-50px) scale(0.8); }
+        }
+
+        /* New Marquee Effects */
+        .marquee.soko-effect {
+            animation: marqueeSlideIn 0.8s ease-in forwards;
+        }
+
+        @keyframes marqueeSlideIn {
+            from { opacity: 0; transform: translateX(-100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* New Navigation Effects */
+        .nav-tab.soko-effect {
+            animation: navTabSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes navTabSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Profile Effects */
+        .profile-img.soko-effect {
+            animation: profileGlow 3s ease-in-out infinite;
+        }
+
+        /* New Music Player Effects */
+        .music-player.soko-effect {
+            animation: musicPlayerSlideIn 0.8s ease-in forwards;
+        }
+
+        @keyframes musicPlayerSlideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Footer Effects */
+        .footer.soko-effect {
+            animation: footerSlideIn 0.8s ease-in forwards;
+        }
+
+        @keyframes footerSlideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Theme Effects */
+        .theme-card.soko-effect {
+            animation: themeCardSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes themeCardSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Tips Effects */
+        .tip-card.soko-effect {
+            animation: tipCardSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes tipCardSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Schedule Effects */
+        .schedule-card.soko-effect {
+            animation: scheduleCardSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes scheduleCardSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Contact Effects */
+        .contact-form.soko-effect {
+            animation: contactFormSlideIn 0.8s ease-in forwards;
+        }
+
+        @keyframes contactFormSlideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Social Effects */
+        .social-btn.soko-effect {
+            animation: socialBtnSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes socialBtnSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Game Effects */
+        .game-item.soko-effect {
+            animation: gameItemSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes gameItemSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Album Effects */
+        .album-slide.soko-effect {
+            animation: albumSlideSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes albumSlideSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Button Effects */
+        .btn.soko-effect {
+            animation: btnSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes btnSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Text Effects */
+        .text.soko-effect {
+            animation: textSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes textSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Card Effects */
+        .glass-card.soko-effect {
+            animation: cardSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes cardSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Section Effects */
+        .section.soko-effect {
+            animation: sectionSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes sectionSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Loader Effects */
+        .loader.soko-effect {
+            animation: loaderSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes loaderSlideIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* New Toast Effects */
+        .toast.soko-effect {
+            animation: toastSlideIn 0.5s ease-out, toastFadeOut 0.5s ease-in 3.5s forwards;
+        }
+
+        @keyframes toastSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes toastFadeOut {
+            to { opacity: 0; transform: translateY(-50px) scale(0.8); }
+        }
+
+        /* New Marquee Effects */
+        .marquee.soko-effect {
+            animation: marqueeSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes marqueeSlideIn {
+            from { opacity: 0; transform: translateX(-100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* New Navigation Effects */
+        .nav-tab.soko-effect {
+            animation: navTabSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes navTabSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Profile Effects */
+        .profile-img.soko-effect {
+            animation: profileGlow 3s ease-in-out infinite;
+        }
+
+        /* New Music Player Effects */
+        .music-player.soko-effect {
+            animation: musicPlayerSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes musicPlayerSlideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Footer Effects */
+        .footer.soko-effect {
+            animation: footerSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes footerSlideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Theme Effects */
+        .theme-card.soko-effect {
+            animation: themeCardSlideIn 0.5s ease-in forwards;
+        }
+
+        @keyframes themeCardSlideIn
