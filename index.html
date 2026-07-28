@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SOKO - Gaming World</title>
+    <title>MOKO - Gaming World</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -325,10 +325,10 @@
             font-weight: 900;
             margin: 10px 0;
             letter-spacing: 6px;
-            animation: sokoPulse 2s ease-in-out infinite, sokoColor 5s ease-in-out infinite;
+            animation: MOKOPulse 2s ease-in-out infinite, MOKOColor 5s ease-in-out infinite;
         }
 
-        @keyframes sokoPulse {
+        @keyframes MOKOPulse {
             0%, 100% { 
                 transform: scale(1);
                 text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
@@ -339,7 +339,7 @@
             }
         }
 
-        @keyframes sokoColor {
+        @keyframes MOKOColor {
             0% { color: var(--primary); }
             25% { color: var(--secondary); }
             50% { color: var(--accent); }
@@ -1535,9 +1535,9 @@
     <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-logo">
-            <span>SOKO</span>
+            <span>MOKO</span>
         </div>
-        <div class="loader-text">SOKO GAMING</div>
+        <div class="loader-text">MOKO GAMING</div>
         <div class="loader-bar-container">
             <div class="loader-bar" id="loaderBar"></div>
         </div>
@@ -1548,18 +1548,18 @@
     <!-- Marquee -->
     <div class="marquee-container">
         <div class="marquee-content">
-            DISCORD SOKO TO PLAY GAMING PHONE ★ SOULS GAMES ★ FIGHTING GAMES ★ PROGRAMMING ★
+            DISCORD MOKO TO PLAY GAMING PHONE ★ SOULS GAMES ★ FIGHTING GAMES ★ PROGRAMMING ★
         </div>
     </div>
 
     <!-- Header -->
     <header class="header">
         <div class="profile-container">
-            <img src="AA.jpg" alt="SOKO Profile" class="profile-img" onerror="this.style.background='linear-gradient(135deg, #00d4ff, #7b2cbf)'">
+            <img src="AA.jpg" alt="MOKO Profile" class="profile-img" onerror="this.style.background='linear-gradient(135deg, #00d4ff, #7b2cbf)'">
         </div>
         <div class="clock-date" id="clockDate">January 1, 2024 - Monday</div>
         <div class="clock" id="clock">00:00:00</div>
-        <h1 class="username">SOKO</h1>
+        <h1 class="username">MOKO</h1>
         <p class="header-subtitle">Souls & Fighting Games Master</p>
     </header>
 
@@ -1636,7 +1636,7 @@
                     </div>
                     <div class="info-item">
                         <div class="info-label">LAST NAME</div>
-                        <div class="info-value">SOKO</div>
+                        <div class="info-value">MOKO</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">GENDER</div>
@@ -2066,7 +2066,7 @@
         </div>
         <div class="music-info">
             <div class="music-title">A.mp3</div>
-            <div class="music-artist">SOKO Gaming Mix</div>
+            <div class="music-artist">MOKO Gaming Mix</div>
         </div>
         <div class="music-controls">
             <button class="music-btn play" onclick="toggleMusic()">
@@ -2083,7 +2083,7 @@
     </div>
 
     <footer class="footer">
-        <p>SOKO Gaming World © 2024</p>
+        <p>MOKO Gaming World © 2024</p>
     </footer>
 
     <audio id="audioPlayer" loop>
@@ -2225,7 +2225,7 @@
 
         // Initialize Home Album
         const homeTexts = [
-            'أهلاً بك في عالم SOKO',
+            'أهلاً بك في عالم MOKO',
             'Souls Games Master',
             'Fighting Games Expert',
             'مبرمج ومحترف ألعاب',
@@ -2233,7 +2233,7 @@
             'تابعنا على جميع المنصات',
             'لحظات لا تُنسى',
             'Gaming Community',
-            'SOKO Gaming World',
+            'MOKO Gaming World',
             'Play Hard, Win Harder'
         ];
         initAlbumSlider('albumContainer', 'albumDots', 'albumText', homeTexts);
@@ -2473,7 +2473,7 @@
             const payload = {
                 content: ` **رسالة جديدة من الموقع!**\n\n **الاسم:** ${name}\n\n💬 **الرسالة:**\n${message}\n\n🕐 **الوقت:** ${new Date().toLocaleString('ar-SA')}`,
                 embeds: [{
-                    title: 'SOKO - تواصل مباشر',
+                    title: 'MOKO - تواصل مباشر',
                     color: 0x00d4ff,
                     footer: {
                         text: 'تم الإرسال من الموقع الشخصي'
